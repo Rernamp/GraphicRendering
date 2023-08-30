@@ -2,6 +2,10 @@
 
 #include <tgaimage.h>
 
+#include<array>
+#include<functional>
+#include <algorithm>
+
 struct Vector2 {
     Vector2(int x, int y) : x(x), y(y) {
     }
@@ -50,6 +54,17 @@ public:
         line(t0, t1, image, color);
         line(t1, t2, image, color);
         line(t2, t0, image, color);
+
+        std::array<Vector2, 3> points {t0, t1, t2};
+
+        std::sort(begin(points), end(points), [](const auto& left, const auto& right){
+            return left.x > right.x;
+        });
+
+        
+
+        
+
     }
 private:
 };
